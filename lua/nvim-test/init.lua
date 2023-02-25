@@ -32,7 +32,7 @@ function M.run(scope)
     -- Find file
     if scope ~= "suite" then
       filename =
-        vim.fn.expand("%" .. (runner.config.filename_modifier or M.config.filename_modifier))
+          vim.fn.expand("%" .. (runner.config.filename_modifier or M.config.filename_modifier))
       if not runner:is_testfile(filename) then
         filename = runner:find_file(filename)
       end
@@ -99,7 +99,7 @@ end
 function M.edit()
   local runner = M.get_runner(vim.bo.filetype)
   local filename =
-    vim.fn.expand("%" .. (runner.config.filename_modifier or M.config.filename_modifier))
+      vim.fn.expand("%" .. (runner.config.filename_modifier or M.config.filename_modifier))
   if not runner:is_testfile(filename) then
     vim.api.nvim_command("edit " .. runner:find_file(filename, true))
   end
@@ -111,6 +111,7 @@ end
 ---@param cfg table: a runner's config
 function M.run_cmd(cmd, cfg)
   notifier:log(table.concat(cmd, " "))
+  print("[test]", table.concat(cmd, " "))
   if not M.config.run then
     return
   end

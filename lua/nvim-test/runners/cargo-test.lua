@@ -38,7 +38,8 @@ function cargotest:build_args(args, filename, opts)
   if opts.tests and #opts.tests > 0 then
     table.insert(args, table.concat(opts.tests, "::"))
     table.insert(args, "--")
-    table.insert(args, "--exact")
+    -- table.insert(args, "--exact")
+    table.insert(args, "--show-output")
   else
     local parts = vim.fn.split(vim.fn.fnamemodify(filename, ":.:r"), "/")
     if parts[#parts] == "main" or parts[#parts] == "lib" or parts[#parts] == "mod" then
